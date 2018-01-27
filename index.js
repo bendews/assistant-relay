@@ -89,14 +89,6 @@ app.post('/broadcast', function (req, res) {
   const preset = req.query.preset;
   const user = req.query.user;
 
-  if(!checkUser(user)) {
-    console.log(`User ${user} not found.  Cannot execute request`);
-    return res.status(400).json({
-        message: `User not found. Who is ${user}?`,
-        command: `Preset: ${preset} | User: ${user}`
-    });
-  }
-
   switch(preset) {
     case 'wakeup':
         sendTextInput(`broadcast wake up everyone`, user);
